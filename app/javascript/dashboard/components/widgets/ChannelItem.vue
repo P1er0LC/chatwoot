@@ -50,6 +50,7 @@ export default {
         'telegram',
         'line',
         'instagram',
+        'evolutionapi'
       ].includes(key);
     },
   },
