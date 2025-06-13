@@ -82,8 +82,13 @@ class Api::V1::Accounts::InboxesController < Api::V1::Accounts::BaseController
 
   def create_channel
     return unless %w[web_widget api email line telegram whatsapp sms].include?(permitted_params[:channel][:type])
-
-    account_channels_method.create!(permitted_params(channel_type_from_params::EDITABLE_ATTRS)[:channel].except(:type))
+    # Para evolution_api, usaremos el canal API existente
+    if permitted_params[:channel][:type] == 'evolutionapi'
+      Channel::Api.create!(permitted_params(Channel::Api::EDITABLE_ATTRS)[:channel].except(:type))
+    else
+      account_channels_method.create!(permitted_params(channel_type_from_params::EDITABLE_ATTRS)[:channel].except(:type))
+    end
+    #account_channels_method.create!(permitted_params(channel_type_from_params::EDITABLE_ATTRS)[:channel].except(:type))
   end
 
   def update_inbox_working_hours
@@ -159,7 +164,8 @@ class Api::V1::Accounts::InboxesController < Api::V1::Accounts::BaseController
       'line' => Channel::Line,
       'telegram' => Channel::Telegram,
       'whatsapp' => Channel::Whatsapp,
-      'sms' => Channel::Sms
+      'sms' => Channel::Sms,
+      'evolutionapi' => Channel::Api,
     }[permitted_params[:channel][:type]]
   end
 
