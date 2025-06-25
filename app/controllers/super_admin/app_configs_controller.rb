@@ -45,6 +45,8 @@ class SuperAdmin::AppConfigsController < SuperAdmin::ApplicationController
                          %w[LINEAR_CLIENT_ID LINEAR_CLIENT_SECRET]
                        when 'instagram'
                          %w[INSTAGRAM_APP_ID INSTAGRAM_APP_SECRET INSTAGRAM_VERIFY_TOKEN INSTAGRAM_API_VERSION ENABLE_INSTAGRAM_CHANNEL_HUMAN_AGENT]
+                       when 'custom_branding'
+                         %w[LOGO_THUMBNAIL LOGO LOGO_DARK BRAND_NAME INSTALLATION_NAME BRAND_URL WIDGET_BRAND_URL TERMS_URL PRIVACY_URL DISPLAY_MANIFEST]
                        else
                          %w[ENABLE_ACCOUNT_SIGNUP FIREBASE_PROJECT_ID FIREBASE_CREDENTIALS]
                        end

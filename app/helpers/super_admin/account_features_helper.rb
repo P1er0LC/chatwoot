@@ -49,4 +49,13 @@ module SuperAdmin::AccountFeaturesHelper
     regular, premium = partition_features(features)
     regular.merge(premium)
   end
+
+  def self.filtered_features_with_defaults(features)
+    regular, premium = partition_features(features)
+    # Convertir todos los valores a true por defecto
+    defaulted_regular = regular.transform_values { true }
+    defaulted_premium = premium.transform_values { true }
+    defaulted_regular.merge(defaulted_premium)
+  end
+  
 end

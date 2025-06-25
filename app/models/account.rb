@@ -7,11 +7,9 @@
 #  custom_attributes     :jsonb
 #  domain                :string(100)
 #  feature_flags         :bigint           default(0), not null
-#  internal_attributes   :jsonb            not null
 #  limits                :jsonb
 #  locale                :integer          default("en")
 #  name                  :string           not null
-#  settings              :jsonb
 #  status                :integer          default("active")
 #  support_email         :string(100)
 #  created_at            :datetime         not null
